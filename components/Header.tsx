@@ -23,7 +23,7 @@ const Header = () => {
     () => (
       <nav>
         <ul>
-          {CATEGORIES.map((category: any) => (
+          {CATEGORIES.map((category) => (
             <li onClick={() => moveCategory(category)} key={category}>
               <span>{category}</span>
             </li>

@@ -1,11 +1,23 @@
-export const IMPOTANCE: any = [
+export const IMPOTANCE: string[] = [
   "별없음 : 상대적으로 중요하지 않고, 자주 쓰지 않지만 알아 두면 도움이 되는 용어",
   "★ : 상대적으로 중요하지만 자주 사용하지 않는 용어",
   "★★ : 중요하지만 자주 사용하지 않는 용어",
   "★★★ : 중요하고 자주 사용하는 단어",
 ];
 
-export const COOKAPPS: any = [
+type StarRating = "" | "★" | "★★" | "★★★";
+export type Category = {
+  [key: string]: CategoryData;
+};
+export type CategoryData = {
+  [key: string]: Content;
+};
+export type Content = {
+  star: StarRating;
+  content: string;
+};
+
+export const COOKAPPS: Category[] = [
   {
     통계: {
       "디에이유 (DAU=Daily Active User)": {
@@ -169,7 +181,7 @@ export const COOKAPPS: any = [
           "오랫동안 게임에 접속하지 않은 유저들을 다시 게임에 유입 시키기 위해 진행하는 광고",
       },
       "인플루언서 마케팅 (Influencer Marketing)": {
-        star: "★★★★",
+        star: "★★★",
         content:
           "소셜 플랫폼에서 다른 사용자들에 비해 유난히 더 영향력 있는 소셜 콘텐츠 크리에이터를 인플루언서라고 함. 인플루언서 마케팅이란 이들이 공유하는 특정 제품에 대한 의견이나 영상을 마케팅에 활용하는 것을 의미함.",
       },
@@ -719,6 +731,4 @@ export const COOKAPPS: any = [
   },
 ];
 
-export const CATEGORIES: any = COOKAPPS.map(
-  (data: any) => Object.keys(data)[0]
-);
+export const CATEGORIES = COOKAPPS.map((data) => Object.keys(data)[0]);
