@@ -8,8 +8,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { modeState, optionState } from "@/recoil/store";
+import { useRecoilState } from "recoil";
+import {
+  modeState,
+  optionState,
+  searchSelectState,
+  searchValState,
+} from "@/recoil/store";
 import DataContent from "@/components/DataContent";
 import Filter from "@/components/Filter";
 import Search from "@/components/Search";
@@ -25,7 +30,7 @@ const Category = ({ directIndex, name }: CategoryProps) => {
     (category) => category === router.query.category
   );
 
-  const option = useRecoilValue(optionState);
+  const [option] = useRecoilState(optionState);
   const [data, setData] = useState<CategoryData>({});
   const [filterData, setFilterData] = useState<[string, Content][] | []>([]);
 
@@ -64,11 +69,24 @@ const Category = ({ directIndex, name }: CategoryProps) => {
   }, [option]);
 
   const [, setMode] = useRecoilState(modeState);
+  const [searchSelect, setSearchSelect] = useRecoilState(searchSelectState);
+  const [searchVal, setSearchVal] = useRecoilState(searchValState);
   useEffect(() => {
     if (directIndex === undefined) {
       setMode(false);
+      setSearchSelect("제목");
+      setSearchVal("");
     }
-  }, [directIndex, setMode]);
+  }, [directIndex, setMode, setSearchSelect, setSearchVal]);
+
+  useEffect(() => {
+    const filtered = Object.entries(data).filter(([key, value]) => {
+      return searchSelect === "제목"
+        ? key.toLowerCase().includes(searchVal.toLowerCase())
+        : value.content.toLowerCase().includes(searchVal.toLowerCase());
+    });
+    return setFilterData(filtered);
+  }, [data, searchSelect, searchVal]);
   return (
     <>
       {directIndex === undefined && (
@@ -106,6 +124,7 @@ type CategoryBoxProps = {
 };
 
 const CategoryBox = styled.section<CategoryBoxProps>`
+  min-height: 101vh;
   padding: 90px calc((100% - 1400px) / 2);
   padding-bottom: ${(props) => props.directIndex && "0px"};
   border-top: ${(props) =>

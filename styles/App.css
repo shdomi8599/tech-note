@@ -5,6 +5,23 @@
   list-style: none;
 }
 
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
 :root {
   --main-color: #ff7f00;
   --boxshadow: 0 0 4px var(--main-color), 0 0 0 3px var(--main-color);
@@ -45,7 +62,7 @@
   left: 2%;
   border-radius: 20px;
   background-color: white;
-  color: green;
+  color: var(--main-color);
   display: grid;
   align-content: center;
   justify-content: center;

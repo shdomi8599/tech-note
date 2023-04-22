@@ -5,12 +5,19 @@ import { useMemo, useState } from "react";
 import useOffResize from "@/hooks/useOffResize";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
-import { modeState, optionState } from "@/recoil/store";
+import {
+  modeState,
+  optionState,
+  searchSelectState,
+  searchValState,
+} from "@/recoil/store";
 import Image from "next/image";
 
 const Header = () => {
   const setOption = useSetRecoilState(optionState);
   const setMode = useSetRecoilState(modeState);
+  const setSearchSelect = useSetRecoilState(searchSelectState);
+  const setSearchVal = useSetRecoilState(searchValState);
   const router = useRouter();
   const [togle, setTogle] = useState(false);
   const togleHandler = () => {
@@ -28,6 +35,8 @@ const Header = () => {
     router.push(category);
     setTogle(false);
     setOption("high");
+    setSearchSelect("제목");
+    setSearchVal("");
   };
 
   const navData = useMemo(

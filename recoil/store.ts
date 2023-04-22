@@ -12,7 +12,7 @@ export const modeState = atom({
 
 export const searchSelectState = atom({
   key: "searchSelectState",
-  default: "",
+  default: "제목",
 });
 
 export const searchValState = atom({

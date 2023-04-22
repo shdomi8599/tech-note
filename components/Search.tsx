@@ -1,20 +1,32 @@
-import { searchValState } from "@/recoil/store";
+import { searchSelectState, searchValState } from "@/recoil/store";
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 
 const Search = () => {
-  const [, setSearchVal] = useRecoilState(searchValState);
+  const [searchSelect, setSearchSelect] = useRecoilState(searchSelectState);
+  const changeSearchSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSearchSelect(e.target.value);
+  };
+
+  const [searchVal, setSearchVal] = useRecoilState(searchValState);
   const changeSearchVal = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(e.target.value);
   };
 
+  const submitEvent = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+  };
+
   return (
-    <SearchBox id="search-box">
+    <SearchBox onSubmit={submitEvent} id="search-box">
       <div>
-        <select className="search-content">
-          <option value="한글명">한글명</option>
-          <option value="영문명">영문명</option>
+        <select
+          value={searchSelect}
+          onChange={changeSearchSelect}
+          className="search-content"
+        >
+          <option value="제목">제목</option>
           <option value="설명">설명</option>
         </select>
       </div>
@@ -23,13 +35,11 @@ const Search = () => {
           <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
         </svg>
         <input
+          value={searchVal}
           onChange={changeSearchVal}
           type="search"
           className="search-content"
         />
-      </div>
-      <div>
-        <button className="search-content search-btn">검색</button>
       </div>
     </SearchBox>
   );
@@ -64,19 +74,6 @@ const SearchBox = styled.form`
       > option {
         font-weight: 600;
       }
-    }
-  }
-
-  .search-btn {
-    margin-left: 20px;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    @media (max-width: 470px) {
-      margin-top: 30px;
-      margin-left: 0px;
     }
   }
 `;
