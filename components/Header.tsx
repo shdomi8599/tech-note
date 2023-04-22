@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { CATEGORIES } from "@/constant/constant";
 import { FaBars } from "react-icons/fa";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import useOffResize from "@/hooks/useOffResize";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
