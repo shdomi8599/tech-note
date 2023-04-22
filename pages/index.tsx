@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Category from "./[category]";
 import { CATEGORIES } from "@/constant/constant";
 import Filter from "@/components/Filter";
+import Search from "@/components/Search";
 
 const Home = () => {
   const directArr: number[] = Array(8)
@@ -16,6 +17,7 @@ const Home = () => {
       </Head>
       <Main>
         <Filter />
+        <Search />
         {directArr.map((idx) => (
           <Category key={idx} directIndex={idx} name={CATEGORIES[idx]} />
         ))}
@@ -33,4 +35,9 @@ const Main = styled.main`
   flex-direction: column;
   width: 100%;
   padding: 90px calc((100% - 1400px) / 2);
+
+  #search-box {
+    padding-left: 28px;
+    margin-bottom: 20px;
+  }
 `;

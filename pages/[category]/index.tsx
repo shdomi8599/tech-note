@@ -12,6 +12,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { modeState, optionState } from "@/recoil/store";
 import DataContent from "@/components/DataContent";
 import Filter from "@/components/Filter";
+import Search from "@/components/Search";
 
 type CategoryProps = {
   directIndex?: number;
@@ -79,13 +80,18 @@ const Category = ({ directIndex, name }: CategoryProps) => {
         <div className="title">
           <h1>{router.query.category || name}</h1>
         </div>
-        {directIndex === undefined && <Filter />}
+        {directIndex === undefined && (
+          <>
+            <Filter />
+            <Search />
+          </>
+        )}
         <div className="main_content">
           {filterData.map(([name, value]) => (
             <DataContent key={name} name={name} value={value} />
           ))}
           {filterData.length === 0 && (
-            <div className="empty_content">★데이터가 존재하지 않아요.★</div>
+            <div className="empty_content">★ 데이터가 존재하지 않아요. ★</div>
           )}
         </div>
       </CategoryBox>
@@ -110,6 +116,10 @@ const CategoryBox = styled.section<CategoryBoxProps>`
   align-items: center;
   flex-direction: column;
 
+  @media (max-width: 236px) {
+    padding-top: 110px;
+  }
+
   > div {
     padding-left: 28px;
   }
@@ -117,7 +127,13 @@ const CategoryBox = styled.section<CategoryBoxProps>`
   > .title {
     width: 100%;
     font-size: 2.2rem;
-    padding-bottom: 24px;
+
+    @media (max-width: 410px) {
+      padding-left: 0px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
   }
 
   > .main_content {
