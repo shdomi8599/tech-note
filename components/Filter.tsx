@@ -41,8 +41,8 @@ const Filter = () => {
       </div>
       <div className="mark">
         <Image
-          width={16}
-          height={16}
+          width={30}
+          height={30}
           src={"/question.png"}
           alt="question_mark"
         />
@@ -61,7 +61,7 @@ const FilterBox = styled.div`
   @media (max-width: 410px) {
     flex-direction: column;
     align-items: center;
-    padding: 0px;
+    padding: 0px !important;
   }
   @media (max-width: 236px) {
     margin-top: 40px;
@@ -84,5 +84,17 @@ const FilterBox = styled.div`
   }
 
   .mark {
+    width: 30px;
+    margin-right: 30px;
+    position: relative;
+    @media (max-width: 410px) {
+      margin-top: 20px;
+      margin-right: 0px;
+    }
+
+    > img {
+      position: absolute;
+      top: 2.5px;
+    }
   }
 `;
