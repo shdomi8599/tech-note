@@ -127,7 +127,7 @@ const CategoryBox = styled.section<CategoryBoxProps>`
   > .title {
     width: 100%;
     font-size: 2.2rem;
-    @media (max-width: 410px) {
+    @media (max-width: 470px) {
       padding-left: 0px;
       display: flex;
       justify-content: center;
@@ -154,7 +154,7 @@ const CategoryBox = styled.section<CategoryBoxProps>`
       @media (max-width: 576px) {
         font-size: 1.5rem;
       }
-      @media (max-width: 410px) {
+      @media (max-width: 470px) {
         font-size: 1.1rem;
       }
     }

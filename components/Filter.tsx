@@ -64,7 +64,7 @@ const FilterBox = styled.div`
   display: flex;
   justify-content: end;
   margin-top: 20px;
-  @media (max-width: 410px) {
+  @media (max-width: 470px) {
     flex-direction: column;
     align-items: center;
     padding: 0px !important;
@@ -74,7 +74,7 @@ const FilterBox = styled.div`
   }
 
   > div:nth-child(2) {
-    @media (max-width: 410px) {
+    @media (max-width: 470px) {
       margin-top: 20px;
     }
 
@@ -107,7 +107,7 @@ const FilterBox = styled.div`
         bottom: -63px;
         z-index: 2;
         padding: 20px;
-        @media (max-width: 410px) {
+        @media (max-width: 470px) {
           right: -102.7px;
           bottom: 30px;
         }
@@ -125,7 +125,7 @@ const FilterBox = styled.div`
           border-top: 0;
           margin-top: -11px;
           margin-right: -22px;
-          @media (max-width: 410px) {
+          @media (max-width: 470px) {
             top: 107%;
             left: 50%;
             border: 22px solid transparent;
@@ -141,7 +141,7 @@ const FilterBox = styled.div`
       }
     }
 
-    @media (max-width: 410px) {
+    @media (max-width: 470px) {
       margin-top: 20px;
       margin-right: 0px;
       margin-bottom: 20px;
