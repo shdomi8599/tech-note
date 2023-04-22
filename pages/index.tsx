@@ -1,5 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
+import Category from "./[category]";
+import { CATEGORIES } from "@/constant/constant";
 
 const Main = styled.main`
   display: flex;
@@ -10,12 +12,20 @@ const Main = styled.main`
 `;
 
 const Home = () => {
+  const directArr: number[] = Array(8)
+    .fill(0)
+    .map((x, i) => x + i);
+
   return (
     <>
       <Head>
         <title>쿡앱스 용어정리집</title>
       </Head>
-      <Main>메인입니다.</Main>
+      <Main>
+        {directArr.map((idx) => (
+          <Category key={idx} directIndex={idx} name={CATEGORIES[idx]}/>
+        ))}
+      </Main>
     </>
   );
 };

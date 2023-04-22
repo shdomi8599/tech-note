@@ -1,34 +1,39 @@
-import { CATEGORIES, COOKAPPS, Content } from "@/constant/constant";
+import {
+  CATEGORIES,
+  COOKAPPS,
+  CategoryData,
+  Content,
+} from "@/constant/constant";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
-import { useRecoilState } from "recoil";
-import { dataState, modeState, optionState } from "@/recoil/store";
+import { useRecoilValue } from "recoil";
+import { optionState } from "@/recoil/store";
 import DataContent from "@/components/DataContent";
+import Filter from "@/components/Filter";
 
-const Category = () => {
+type CategoryProps = {
+  directIndex?: number;
+  name?: string;
+};
+
+const Category = ({ directIndex, name }: CategoryProps) => {
   const router = useRouter();
   const index = CATEGORIES.findIndex(
     (category) => category === router.query.category
   );
 
-  const [mode, setMode] = useRecoilState(modeState);
-  const modeHandler = () => {
-    setMode(!mode);
-  };
-
-  const [option, setOption] = useRecoilState(optionState);
-  const changeOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOption(e.target.value);
-  };
-
-  const [data, setData] = useRecoilState(dataState);
+  const option = useRecoilValue(optionState);
+  const [data, setData] = useState<CategoryData>({});
   const [filterData, setFilterData] = useState<[string, Content][] | []>([]);
 
   useEffect(() => {
+    if (directIndex !== undefined) {
+      return setData(COOKAPPS[directIndex][CATEGORIES[directIndex]]);
+    }
     index !== -1 && setData(COOKAPPS[index][CATEGORIES[index]]);
-  }, [index, setData]);
+  }, [directIndex, index, setData]);
 
   useEffect(() => {
     setFilterData(Object.entries(data || []));
@@ -61,43 +66,19 @@ const Category = () => {
       <Head>
         <title>쿡앱스 용어정리집 - {router.query.category}</title>
       </Head>
-      <CategoryBox>
+      <CategoryBox directIndex={directIndex}>
         <div className="title">
-          <h1>{router.query.category}</h1>
+          <h1>{router.query.category || name}</h1>
         </div>
-        <div className="filter">
-          <div>
-            <label className="switch">
-              <input type="checkbox" />
-              <div onClick={modeHandler} className="slider">
-                <span>일반</span>
-                <span>시험</span>
-              </div>
-            </label>
-          </div>
-          <div>
-            <select value={option} onChange={changeOption}>
-              <optgroup label="중요">
-                <option value="high">별 높은 순</option>
-                <option value="low">별 낮은 순</option>
-              </optgroup>
-              <optgroup label="추천">
-                <option value="">별없음</option>
-                <option value="★">★</option>
-                <option value="★★">★★</option>
-                <option value="★★★">★★★</option>
-              </optgroup>
-            </select>
-          </div>
-        </div>
-        <section>
+        {directIndex === undefined && <Filter />}
+        <div className="main_content">
           {filterData.map(([name, value]) => (
             <DataContent key={name} name={name} value={value} />
           ))}
           {filterData.length === 0 && (
             <div className="empty_content">★데이터가 존재하지 않아요.★</div>
           )}
-        </section>
+        </div>
       </CategoryBox>
     </>
   );
@@ -105,8 +86,14 @@ const Category = () => {
 
 export default Category;
 
-const CategoryBox = styled.main`
-  padding: 140px calc((100% - 1400px) / 2);
+type CategoryBoxProps = {
+  directIndex?: number;
+};
+
+const CategoryBox = styled.section<CategoryBoxProps>`
+  padding: 90px calc((100% - 1400px) / 2);
+  padding-bottom: ${(props) => props.directIndex && "0px"};
+  border-top: 1px solid #dddddd;
   width: 100%;
   display: flex;
   align-items: center;
@@ -122,70 +109,15 @@ const CategoryBox = styled.main`
     padding-bottom: 24px;
   }
 
-  > .filter {
+  > .main_content {
     width: 100%;
-    display: flex;
-    justify-content: end;
-    margin-top: 20px;
-    @media (max-width: 410px) {
-      flex-direction: column;
-      align-items: center;
-      padding: 0px;
-    }
-
-    > div:last-child {
-      @media (max-width: 410px) {
-        margin-top: 20px;
-      }
-
-      select {
-        margin: 0px 28px;
-        width: 140px;
-        font-size: 1.2rem;
-        padding: 6px;
-        font-weight: 600;
-        box-shadow: var(--boxshadow);
-        border: 1px solid #c8cac8;
-      }
-    }
-  }
-
-  > section {
-    width: 100%;
+    padding-left: 0px;
+    padding-bottom: 30px;
 
     > div {
       margin: 50px 0px;
       padding: 0px 28px;
     }
-
-    /* .content {
-      width: 100%;
-      position: relative;
-
-      > div:first-child {
-        display: flex;
-        margin-bottom: 30px;
-        flex-direction: column;
-
-        > div {
-          display: flex;
-
-          .drop_btn {
-            width: 16px;
-            height: 16px;
-            position: absolute;
-            left: 90px;
-            top: 4px;
-            cursor: pointer;
-
-            > img {
-              width: 100%;
-              height: 100%;
-            }
-          }
-        }
-      }
-    } */
 
     .empty_content {
       width: 100%;

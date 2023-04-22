@@ -35,6 +35,7 @@ const Header = () => {
         </ul>
       </nav>
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
