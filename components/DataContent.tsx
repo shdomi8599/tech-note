@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Content } from "@/constant/constant";
+import { modeState } from "@/recoil/store";
+import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
 type DataContentProps = {
@@ -8,30 +11,47 @@ type DataContentProps = {
 };
 
 const DataContent = ({ name, value }: DataContentProps) => {
+  const [drop, setDrop] = useState(false);
+  const dropHandler = () => {
+    setDrop(!drop);
+  };
+
+  const mode = useRecoilValue(modeState);
+  useEffect(() => {
+    if (mode) {
+      return setDrop(false);
+    }
+    setDrop(true);
+  }, [mode]);
+
   return (
-    <DataContentBox className="content">
+    <DataContentBox drop={drop} className="content">
       <div>
         <div>
           <div>
-            <span>{value.star}</span>
+            <span className="drop_btn" onClick={dropHandler}>
+              <img src="/drop-down.png" alt="" />
+            </span>
+            <span className="star">{value.star}</span>
             <h2>{name.split("(")[0]}</h2>
-          </div>
-          <div className="drop_btn">
-            <img src="/drop-down.png" alt="" />
           </div>
         </div>
         <div>
           <h4>{`(${name.split("(")[1]}`}</h4>
         </div>
       </div>
-      <div>{value.content}</div>
+      {drop && <div>{value.content}</div>}
     </DataContentBox>
   );
 };
 
 export default DataContent;
 
-const DataContentBox = styled.div`
+type DataContentBoxProps = {
+  drop: boolean;
+};
+
+const DataContentBox = styled.div<DataContentBoxProps>`
   width: 100%;
   position: relative;
 
@@ -42,18 +62,29 @@ const DataContentBox = styled.div`
 
     > div {
       display: flex;
+      position: relative;
+
+      h2 {
+        margin-top: 4px;
+      }
+
+      .star {
+        margin-left: 24px;
+      }
 
       .drop_btn {
+        position: absolute;
+        top: 4px;
         width: 16px;
         height: 16px;
-        position: absolute;
-        left: 90px;
-        top: 4px;
+        display: inline-block;
         cursor: pointer;
+        margin-right: 10px;
 
         > img {
           width: 100%;
           height: 100%;
+          transform: ${(props) => (props.drop ? "rotate(-180deg)" : "")};
         }
       }
     }

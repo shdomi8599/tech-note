@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import { useRecoilState } from "recoil";
-import { dataState, optionState } from "@/recoil/store";
+import { dataState, modeState, optionState } from "@/recoil/store";
 import DataContent from "@/components/DataContent";
 
 const Category = () => {
@@ -52,6 +52,10 @@ const Category = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [option]);
 
+  const [mode, setMode] = useRecoilState(modeState);
+  const modeHandler = () => {
+    setMode(!mode);
+  };
   return (
     <>
       <Head>
@@ -65,7 +69,7 @@ const Category = () => {
           <div>
             <label className="switch">
               <input type="checkbox" />
-              <div className="slider">
+              <div onClick={modeHandler} className="slider">
                 <span>일반</span>
                 <span>시험</span>
               </div>
