@@ -62,9 +62,15 @@ const HeaderBox = styled.header<HeaderBoxProps>`
   align-items: center;
   position: fixed;
   background-color: var(--main-color);
+  @media (max-width: 236px) {
+    flex-direction: column;
+  }
 
   .logo {
     margin-left: 28px;
+    @media (max-width: 236px) {
+      margin-left: 0px;
+    }
   }
 
   .main_nav {
@@ -95,12 +101,19 @@ const HeaderBox = styled.header<HeaderBoxProps>`
     @media (max-width: 1040px) {
       display: block;
     }
+    @media (max-width: 236px) {
+      margin-right: 0px;
+      margin-top: 10px;
+    }
   }
 
   .togle_nav {
     position: absolute;
     width: 100%;
     top: 56px;
+    @media (max-width: 236px) {
+      top: 98px;
+    }
 
     nav {
       width: 100%;

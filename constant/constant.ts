@@ -7,7 +7,7 @@ export const IMPOTANCE = [
 
 export const COOKAPPS = [
   {
-    "통계": {
+    통계: {
       "디에이유 (DAU=Daily Active User)": {
         star: "★★★",
         content:
@@ -72,7 +72,7 @@ export const COOKAPPS = [
     },
   },
   {
-    "마케팅": {
+    마케팅: {
       "오가닉 유저 (Organic User)": {
         star: "★★★",
         content:
@@ -176,7 +176,7 @@ export const COOKAPPS = [
     },
   },
   {
-    "기획": {
+    기획: {
       "라인매칭 (Line-matching)": {
         star: "★★★",
         content:
@@ -353,7 +353,7 @@ export const COOKAPPS = [
     },
   },
   {
-    "그래픽": {
+    그래픽: {
       "레이아웃 (Layout)": {
         star: "★★★",
         content:
@@ -476,7 +476,7 @@ export const COOKAPPS = [
     },
   },
   {
-    "개발": {
+    개발: {
       "게임오브젝트 (Game Object)": {
         star: "★★★",
         content:
@@ -616,7 +616,7 @@ export const COOKAPPS = [
     },
   },
   {
-    "경영지원": {
+    경영지원: {
       "게임잼 (Game Jam)": {
         star: "★★★",
         content:
@@ -684,7 +684,7 @@ export const COOKAPPS = [
     },
   },
   {
-    "기타": {
+    기타: {
       "큐에이 (Quality Assurance)": {
         star: "★★★",
         content:
