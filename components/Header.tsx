@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import styled from "styled-components";
 import { CATEGORIES } from "@/constant/constant";
 import { FaBars } from "react-icons/fa";
@@ -7,6 +6,7 @@ import useOffResize from "@/hooks/useOffResize";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
 import { modeState, optionState } from "@/recoil/store";
+import Image from "next/image";
 
 const Header = () => {
   const setOption = useSetRecoilState(optionState);
@@ -46,8 +46,10 @@ const Header = () => {
     <HeaderBox togle={togle}>
       <div className="logo">
         <a onClick={() => moveCategory()}>
-          <img
-            src="https://www.cookapps.com/img/logo-white.76a0b6f4.svg"
+          <Image
+            width={129}
+            height={28}
+            src={"https://www.cookapps.com/img/logo-white.76a0b6f4.svg"}
             alt="logo"
           />
         </a>

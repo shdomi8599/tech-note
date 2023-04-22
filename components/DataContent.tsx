@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import { Content } from "@/constant/constant";
 import { modeState, optionState } from "@/recoil/store";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
@@ -31,7 +31,12 @@ const DataContent = ({ name, value }: DataContentProps) => {
         <div>
           <div>
             <span className="drop_btn" onClick={dropHandler}>
-              <img src="/drop-down.png" alt="" />
+              <Image
+                src={"/drop-down.png"}
+                width={16}
+                height={16}
+                alt="drop_down"
+              />
             </span>
             <span className="star">{value.star}</span>
             <h2>{name.split("(")[0]}</h2>
@@ -76,15 +81,11 @@ const DataContentBox = styled.div<DataContentBoxProps>`
       .drop_btn {
         position: absolute;
         top: 3.5px;
-        width: 16px;
-        height: 16px;
         display: inline-block;
         cursor: pointer;
         margin-right: 10px;
 
         > img {
-          width: 100%;
-          height: 100%;
           transform: ${(props) => (props.drop ? "rotate(-180deg)" : "")};
         }
       }

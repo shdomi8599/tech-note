@@ -1,4 +1,5 @@
 import { modeState, optionState } from "@/recoil/store";
+import Image from "next/image";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 
@@ -38,6 +39,14 @@ const Filter = () => {
           </optgroup>
         </select>
       </div>
+      <div className="mark">
+        <Image
+          width={16}
+          height={16}
+          src={"/question.png"}
+          alt="question_mark"
+        />
+      </div>
     </FilterBox>
   );
 };
@@ -72,5 +81,8 @@ const FilterBox = styled.div`
       box-shadow: var(--boxshadow);
       border: 1px solid #c8cac8;
     }
+  }
+
+  .mark {
   }
 `;
