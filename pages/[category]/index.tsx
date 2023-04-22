@@ -30,6 +30,8 @@ const Category = ({ directIndex, name }: CategoryProps) => {
     (category) => category === router.query.category
   );
 
+  const [searchSelect, setSearchSelect] = useRecoilState(searchSelectState);
+  const [searchVal, setSearchVal] = useRecoilState(searchValState);
   const [option] = useRecoilState(optionState);
   const [data, setData] = useState<CategoryData>({});
   const [filterData, setFilterData] = useState<[string, Content][] | []>([]);
@@ -46,9 +48,13 @@ const Category = ({ directIndex, name }: CategoryProps) => {
   }, [data]);
 
   useEffect(() => {
+    const searchFiltered = Object.entries(data).filter(([key, value]) => {
+      return searchSelect === "제목"
+        ? key.toLowerCase().includes(searchVal.toLowerCase())
+        : value.content.toLowerCase().includes(searchVal.toLowerCase());
+    });
     const importantFilter = (option: string) => {
-      const arrData = Object.entries(data);
-      const filteredData = arrData.sort((a, b) => {
+      const filteredData = searchFiltered.sort((a, b) => {
         const starA = a[1].star.length;
         const starB = b[1].star.length;
         return option === "high" ? starB - starA : starA - starB;
@@ -56,7 +62,7 @@ const Category = ({ directIndex, name }: CategoryProps) => {
       setFilterData(filteredData);
     };
     const recommendFilter = (option: string) => {
-      const filteredData = Object.entries(data).filter(
+      const filteredData = searchFiltered.filter(
         ([, value]) => value.star === option
       );
       setFilterData(filteredData);
@@ -66,11 +72,9 @@ const Category = ({ directIndex, name }: CategoryProps) => {
     }
     recommendFilter(option);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [option]);
+  }, [option, searchSelect, searchVal]);
 
   const [, setMode] = useRecoilState(modeState);
-  const [searchSelect, setSearchSelect] = useRecoilState(searchSelectState);
-  const [searchVal, setSearchVal] = useRecoilState(searchValState);
   useEffect(() => {
     if (directIndex === undefined) {
       setMode(false);
@@ -79,14 +83,6 @@ const Category = ({ directIndex, name }: CategoryProps) => {
     }
   }, [directIndex, setMode, setSearchSelect, setSearchVal]);
 
-  useEffect(() => {
-    const filtered = Object.entries(data).filter(([key, value]) => {
-      return searchSelect === "제목"
-        ? key.toLowerCase().includes(searchVal.toLowerCase())
-        : value.content.toLowerCase().includes(searchVal.toLowerCase());
-    });
-    return setFilterData(filtered);
-  }, [data, searchSelect, searchVal]);
   return (
     <>
       {directIndex === undefined && (
