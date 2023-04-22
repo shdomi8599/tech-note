@@ -12,6 +12,7 @@ import {
   searchValState,
 } from "@/recoil/store";
 import Image from "next/image";
+import { useOffClick } from "@/hooks/useOffClick";
 
 const Header = () => {
   const setOption = useSetRecoilState(optionState);
@@ -19,7 +20,7 @@ const Header = () => {
   const setSearchSelect = useSetRecoilState(searchSelectState);
   const setSearchVal = useSetRecoilState(searchValState);
   const router = useRouter();
-  const [togle, setTogle] = useState(false);
+  const [togle, setTogle, ref] = useOffClick(false);
   const togleHandler = () => {
     setTogle(!togle);
   };
@@ -58,7 +59,7 @@ const Header = () => {
   useOffResize(1040, "up", () => setTogle(false));
 
   return (
-    <HeaderBox togle={togle}>
+    <HeaderBox togle={togle} ref={ref}>
       <div className="logo">
         <a onClick={moveHome}>
           <Image
