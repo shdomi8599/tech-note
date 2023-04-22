@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Head from "next/head";
 import { useRecoilState } from "recoil";
 import { dataState, optionState } from "@/recoil/store";
+import DataContent from "@/components/DataContent";
 
 const Category = () => {
   const router = useRouter();
@@ -21,9 +22,7 @@ const Category = () => {
   const [filterData, setFilterData] = useState<[string, Content][] | []>([]);
 
   useEffect(() => {
-    if (index !== -1) {
-      setData(COOKAPPS[index][CATEGORIES[index]]);
-    }
+    index !== -1 && setData(COOKAPPS[index][CATEGORIES[index]]);
   }, [index, setData]);
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const Category = () => {
       const filteredData = Object.entries(data).filter(
         ([, value]) => value.star === option
       );
-      return setFilterData(filteredData);
+      setFilterData(filteredData);
     };
     if (option === "high" || option === "low") {
       return importantFilter(option);
@@ -88,19 +87,8 @@ const Category = () => {
           </div>
         </div>
         <section>
-          {filterData.map(([key, value]) => (
-            <div className="content" key={key}>
-              <div>
-                <div>
-                  <span>{value.star}</span>
-                  <h2>{key.split("(")[0]}</h2>
-                </div>
-                <div>
-                  <h4>{`(${key.split("(")[1]}`}</h4>
-                </div>
-              </div>
-              <div>{value.content}</div>
-            </div>
+          {filterData.map(([name, value]) => (
+            <DataContent key={name} name={name} value={value} />
           ))}
           {filterData.length === 0 && (
             <div className="empty_content">★데이터가 존재하지 않아요.★</div>
@@ -166,15 +154,34 @@ const CategoryBox = styled.main`
       padding: 0px 28px;
     }
 
-    .content {
+    /* .content {
       width: 100%;
+      position: relative;
 
       > div:first-child {
         display: flex;
         margin-bottom: 30px;
         flex-direction: column;
+
+        > div {
+          display: flex;
+
+          .drop_btn {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            left: 90px;
+            top: 4px;
+            cursor: pointer;
+
+            > img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
       }
-    }
+    } */
 
     .empty_content {
       width: 100%;
@@ -182,6 +189,12 @@ const CategoryBox = styled.main`
       font-weight: 900;
       justify-content: center;
       font-size: 2.3rem;
+      @media (max-width: 576px) {
+        font-size: 1.5rem;
+      }
+      @media (max-width: 410px) {
+        font-size: 1.1rem;
+      }
     }
   }
 `;
