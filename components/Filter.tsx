@@ -48,7 +48,7 @@ const Filter = () => {
         <Image
           width={30}
           height={30}
-          src={"/question.png"}
+          src={`/cookapps-dictionary/question.png`}
           alt="question_mark"
         />
         <div className="speech">

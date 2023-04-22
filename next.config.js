@@ -1,7 +1,8 @@
 const debug = process.env.NODE_ENV !== "production";
-const repository = "https://shdomi8599.github.io/cookapps-dictionary";
+const repository = "cookapps-dictionary";
 
 const nextConfig = {
+  basePath: "/cookapps-dictionary",
   assetPrefix: !debug ? `/${repository}/` : "",
   trailingSlash: true,
   images: {

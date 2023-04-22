@@ -8,7 +8,7 @@ const MyDocument = ({ styles }: Props) => {
   return (
     <Html lang="ko">
       <Head>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href={`/cookapps-dictionary/favicon.png`} />
         {styles}
       </Head>
       <body>
