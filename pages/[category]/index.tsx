@@ -85,18 +85,29 @@ const Category = () => {
           <h1>{router.query.category}</h1>
         </div>
         <div className="filter">
-          <select value={option} onChange={changeOption}>
-            <optgroup label="중요">
-              <option value="high">별 높은 순</option>
-              <option value="low">별 낮은 순</option>
-            </optgroup>
-            <optgroup label="추천">
-              <option value="">별없음</option>
-              <option value="1star">★</option>
-              <option value="2star">★★</option>
-              <option value="3star">★★★</option>
-            </optgroup>
-          </select>
+          <div>
+            <label className="switch">
+              <input type="checkbox" />
+              <div className="slider">
+                <span>일반</span>
+                <span>시험</span>
+              </div>
+            </label>
+          </div>
+          <div>
+            <select value={option} onChange={changeOption}>
+              <optgroup label="중요">
+                <option value="high">별 높은 순</option>
+                <option value="low">별 낮은 순</option>
+              </optgroup>
+              <optgroup label="추천">
+                <option value="">별없음</option>
+                <option value="1star">★</option>
+                <option value="2star">★★</option>
+                <option value="3star">★★★</option>
+              </optgroup>
+            </select>
+          </div>
         </div>
         <section>
           {filterData.map(([key, value]) => (
@@ -143,12 +154,33 @@ const CategoryBox = styled.main`
     display: flex;
     justify-content: end;
     margin-top: 20px;
+    /* position: relative; */
+    @media (max-width: 410px) {
+      flex-direction: column;
+      align-items: center;
+      padding: 0px;
+    }
+
+    /* > div:first-child {
+      position: absolute;
+      right: 50px;
+      bottom: -13px;
+    } */
+
+    > div:last-child {
+      @media (max-width: 410px) {
+        margin-top: 20px;
+      }
+    }
 
     select {
       margin: 0px 28px;
       width: 140px;
       font-size: 1.2rem;
       padding: 6px;
+      font-weight: 600;
+      box-shadow: var(--boxshadow);
+      border: 1px solid #c8cac8;
     }
   }
 

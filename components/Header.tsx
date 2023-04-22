@@ -73,6 +73,7 @@ const HeaderBox = styled.header<HeaderBoxProps>`
   align-items: center;
   position: fixed;
   background-color: var(--main-color);
+  z-index: 10;
   @media (max-width: 236px) {
     flex-direction: column;
   }
