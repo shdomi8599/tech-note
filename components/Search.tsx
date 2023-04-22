@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Search = () => {
+  
   return (
     <SearchBox id="search-box">
       <div>

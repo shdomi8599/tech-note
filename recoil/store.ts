@@ -9,3 +9,13 @@ export const modeState = atom({
   key: "modeState",
   default: false,
 });
+
+export const searchSelectState = atom({
+  key: "searchSelectState",
+  default: "",
+});
+
+export const searchValState = atom({
+  key: "searchValState",
+  default: "",
+});
