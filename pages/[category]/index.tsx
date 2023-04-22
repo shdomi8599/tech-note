@@ -31,47 +31,25 @@ const Category = () => {
   }, [data]);
 
   useEffect(() => {
-    const arrData = Object.entries(data);
-    if (option === "high") {
+    const importantFilter = (option: string) => {
+      const arrData = Object.entries(data);
       const filteredData = arrData.sort((a, b) => {
         const starA = a[1].star.length;
         const starB = b[1].star.length;
-        return starB - starA;
+        return option === "high" ? starB - starA : starA - starB;
       });
-      return setFilterData(filteredData);
-    }
-    if (option === "low") {
-      const filteredData = arrData.sort((a, b) => {
-        const starA = a[1].star.length;
-        const starB = b[1].star.length;
-        return starA - starB;
-      });
-      return setFilterData(filteredData);
-    }
-    if (option === "") {
+      setFilterData(filteredData);
+    };
+    const recommendFilter = (option: string) => {
       const filteredData = Object.entries(data).filter(
-        ([, value]) => value.star === ""
+        ([, value]) => value.star === option
       );
       return setFilterData(filteredData);
+    };
+    if (option === "high" || option === "low") {
+      return importantFilter(option);
     }
-    if (option === "★") {
-      const filteredData = Object.entries(data).filter(
-        ([, value]) => value.star === "★"
-      );
-      return setFilterData(filteredData);
-    }
-    if (option === "★★") {
-      const filteredData = Object.entries(data).filter(
-        ([, value]) => value.star === "★★"
-      );
-      return setFilterData(filteredData);
-    }
-    if (option === "★★★") {
-      const filteredData = Object.entries(data).filter(
-        ([, value]) => value.star === "★★★"
-      );
-      return setFilterData(filteredData);
-    }
+    recommendFilter(option);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [option]);
 
@@ -157,7 +135,6 @@ const CategoryBox = styled.main`
     display: flex;
     justify-content: end;
     margin-top: 20px;
-    /* position: relative; */
     @media (max-width: 410px) {
       flex-direction: column;
       align-items: center;
