@@ -27,7 +27,11 @@ const Filter = () => {
         </label>
       </div>
       <div>
-        <select value={option} onChange={changeOption}>
+        <select
+          className="search-content"
+          value={option}
+          onChange={changeOption}
+        >
           <optgroup label="중요">
             <option value="high">별 높은 순</option>
             <option value="low">별 낮은 순</option>
@@ -84,8 +88,6 @@ const FilterBox = styled.div`
       font-size: 1.2rem;
       padding: 6px;
       font-weight: 600;
-      box-shadow: var(--boxshadow);
-      border: 1px solid #c8cac8;
     }
   }
 

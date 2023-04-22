@@ -76,6 +76,7 @@ const DataContentBox = styled.div<DataContentBoxProps>`
 
       .star {
         margin-left: 24px;
+        color: var(--main-color);
       }
 
       .drop_btn {

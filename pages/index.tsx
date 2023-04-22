@@ -37,7 +37,6 @@ const Main = styled.main`
   padding: 90px calc((100% - 1400px) / 2);
 
   #search-box {
-    padding-left: 28px;
     margin-bottom: 20px;
   }
 `;

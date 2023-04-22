@@ -41,6 +41,7 @@ const SearchBox = styled.form`
   margin-top: 50px;
   display: flex;
   width: 100%;
+  padding-left: 28px;
 
   @media (max-width: 470px) {
     flex-direction: column;
