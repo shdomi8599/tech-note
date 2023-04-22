@@ -120,9 +120,9 @@ type CategoryBoxProps = {
 };
 
 const CategoryBox = styled.section<CategoryBoxProps>`
-  min-height: 101vh;
+  min-height: ${(props) => (props.directIndex !== undefined ? "" : "101vh")};
   padding: 90px calc((100% - 1400px) / 2);
-  padding-bottom: ${(props) => props.directIndex && "0px"};
+  padding-bottom: 0px;
   border-top: ${(props) =>
     props.directIndex !== 0 ? "1px solid #dddddd" : ""};
   padding-top: ${(props) => props.directIndex === 0 && "30px"};

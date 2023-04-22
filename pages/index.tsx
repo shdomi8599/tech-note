@@ -35,6 +35,7 @@ const Main = styled.main`
   flex-direction: column;
   width: 100%;
   padding: 90px calc((100% - 1400px) / 2);
+  padding-bottom: 0px;
 
   #search-box {
     margin-bottom: 20px;
