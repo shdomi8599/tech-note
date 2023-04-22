@@ -2,14 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import Category from "./[category]";
 import { CATEGORIES } from "@/constant/constant";
-
-const Main = styled.main`
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-`;
+import Filter from "@/components/Filter";
 
 const Home = () => {
   const directArr: number[] = Array(8)
@@ -22,8 +15,9 @@ const Home = () => {
         <title>쿡앱스 용어정리집</title>
       </Head>
       <Main>
+        <Filter />
         {directArr.map((idx) => (
-          <Category key={idx} directIndex={idx} name={CATEGORIES[idx]}/>
+          <Category key={idx} directIndex={idx} name={CATEGORIES[idx]} />
         ))}
       </Main>
     </>
@@ -31,3 +25,17 @@ const Home = () => {
 };
 
 export default Home;
+
+const Main = styled.main`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  > div:first-child {
+    position: absolute;
+    top: 100px;
+    right: 275px;
+  }
+`;
