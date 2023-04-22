@@ -63,9 +63,11 @@ const Category = ({ directIndex, name }: CategoryProps) => {
   }, [option]);
   return (
     <>
-      <Head>
-        <title>쿡앱스 용어정리집 - {router.query.category}</title>
-      </Head>
+      {directIndex === undefined && (
+        <Head>
+          <title>쿡앱스 용어정리집 - {router.query.category}</title>
+        </Head>
+      )}
       <CategoryBox directIndex={directIndex}>
         <div className="title">
           <h1>{router.query.category || name}</h1>

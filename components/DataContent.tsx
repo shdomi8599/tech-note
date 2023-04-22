@@ -12,7 +12,7 @@ type DataContentProps = {
 
 const DataContent = ({ name, value }: DataContentProps) => {
   const option = useRecoilValue(optionState);
-  const [drop, setDrop] = useState(false);
+  const [drop, setDrop] = useState(true);
   const dropHandler = () => {
     setDrop(!drop);
   };

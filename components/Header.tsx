@@ -19,9 +19,9 @@ const Header = () => {
 
   const moveCategory = (category: string = "/") => {
     router.push(category);
+    setMode(false);
     setTogle(false);
     setOption("high");
-    setMode(false);
   };
 
   const navData = useMemo(
