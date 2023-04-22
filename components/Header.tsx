@@ -17,9 +17,15 @@ const Header = () => {
     setTogle(!togle);
   };
 
-  const moveCategory = (category: string = "/") => {
-    router.push(category);
+  const moveHome = () => {
+    router.push("/");
     setMode(false);
+    setTogle(false);
+    setOption("high");
+  };
+
+  const moveCategory = (category: string) => {
+    router.push(category);
     setTogle(false);
     setOption("high");
   };
@@ -45,7 +51,7 @@ const Header = () => {
   return (
     <HeaderBox togle={togle}>
       <div className="logo">
-        <a onClick={() => moveCategory()}>
+        <a onClick={moveHome}>
           <Image
             width={129}
             height={28}

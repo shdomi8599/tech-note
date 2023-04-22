@@ -8,8 +8,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
-import { useRecoilValue } from "recoil";
-import { optionState } from "@/recoil/store";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { modeState, optionState } from "@/recoil/store";
 import DataContent from "@/components/DataContent";
 import Filter from "@/components/Filter";
 
@@ -61,6 +61,13 @@ const Category = ({ directIndex, name }: CategoryProps) => {
     recommendFilter(option);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [option]);
+
+  const [, setMode] = useRecoilState(modeState);
+  useEffect(() => {
+    if (directIndex === undefined) {
+      setMode(false);
+    }
+  }, [directIndex, setMode]);
   return (
     <>
       {directIndex === undefined && (
