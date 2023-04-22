@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import { useRecoilState } from "recoil";
-import { dataState } from "@/recoil/store";
+import { dataState, optionState } from "@/recoil/store";
 
 const Category = () => {
   const router = useRouter();
@@ -12,7 +12,7 @@ const Category = () => {
     (category) => category === router.query.category
   );
 
-  const [option, setOption] = useState("high");
+  const [option, setOption] = useRecoilState(optionState);
   const changeOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOption(e.target.value);
   };
@@ -85,7 +85,7 @@ const Category = () => {
           <h1>{router.query.category}</h1>
         </div>
         <div className="filter">
-          <select onChange={changeOption}>
+          <select value={option} onChange={changeOption}>
             <optgroup label="중요">
               <option value="high">별 높은 순</option>
               <option value="low">별 낮은 순</option>
@@ -99,21 +99,20 @@ const Category = () => {
           </select>
         </div>
         <section>
-          {Array.isArray(filterData) &&
-            filterData.map(([key, value]) => (
-              <div className="content" key={key}>
+          {filterData.map(([key, value]) => (
+            <div className="content" key={key}>
+              <div>
                 <div>
-                  <div>
-                    <span>{value.star}</span>
-                    <h2>{key.split("(")[0]}</h2>
-                  </div>
-                  <div>
-                    <h4>{`(${key.split("(")[1]}`}</h4>
-                  </div>
+                  <span>{value.star}</span>
+                  <h2>{key.split("(")[0]}</h2>
                 </div>
-                <div>{value.content}</div>
+                <div>
+                  <h4>{`(${key.split("(")[1]}`}</h4>
+                </div>
               </div>
-            ))}
+              <div>{value.content}</div>
+            </div>
+          ))}
         </section>
       </CategoryBox>
     </>

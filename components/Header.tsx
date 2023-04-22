@@ -6,8 +6,11 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import useOffResize from "@/hooks/useOffResize";
 import { useRouter } from "next/router";
+import { useSetRecoilState } from "recoil";
+import { optionState } from "@/recoil/store";
 
 const Header = () => {
+  const setOption = useSetRecoilState(optionState);
   const router = useRouter();
   const [togle, setTogle] = useState(false);
   const togleHandler = () => {
@@ -17,6 +20,7 @@ const Header = () => {
   const moveCategory = (category: string) => {
     router.push(category);
     setTogle(false);
+    setOption("high");
   };
 
   const navData = useMemo(
