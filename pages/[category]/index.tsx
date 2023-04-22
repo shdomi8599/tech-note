@@ -54,19 +54,19 @@ const Category = () => {
       );
       return setFilterData(filteredData);
     }
-    if (option === "1star") {
+    if (option === "★") {
       const filteredData = Object.entries(data).filter(
         ([, value]) => value.star === "★"
       );
       return setFilterData(filteredData);
     }
-    if (option === "2star") {
+    if (option === "★★") {
       const filteredData = Object.entries(data).filter(
         ([, value]) => value.star === "★★"
       );
       return setFilterData(filteredData);
     }
-    if (option === "3star") {
+    if (option === "★★★") {
       const filteredData = Object.entries(data).filter(
         ([, value]) => value.star === "★★★"
       );
@@ -102,9 +102,9 @@ const Category = () => {
               </optgroup>
               <optgroup label="추천">
                 <option value="">별없음</option>
-                <option value="1star">★</option>
-                <option value="2star">★★</option>
-                <option value="3star">★★★</option>
+                <option value="★">★</option>
+                <option value="★★">★★</option>
+                <option value="★★★">★★★</option>
               </optgroup>
             </select>
           </div>
@@ -124,6 +124,9 @@ const Category = () => {
               <div>{value.content}</div>
             </div>
           ))}
+          {filterData.length === 0 && (
+            <div className="empty_content">★데이터가 존재하지 않아요.★</div>
+          )}
         </section>
       </CategoryBox>
     </>
@@ -181,16 +184,27 @@ const CategoryBox = styled.main`
   > section {
     width: 100%;
 
-    .content {
-      width: 100%;
+    > div {
       margin: 50px 0px;
       padding: 0px 28px;
+    }
+
+    .content {
+      width: 100%;
 
       > div:first-child {
         display: flex;
         margin-bottom: 30px;
         flex-direction: column;
       }
+    }
+
+    .empty_content {
+      width: 100%;
+      display: flex;
+      font-weight: 900;
+      justify-content: center;
+      font-size: 2.3rem;
     }
   }
 `;
