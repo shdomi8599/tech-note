@@ -1,11 +1,11 @@
-export const IMPOTANCE = [
+export const IMPOTANCE: any = [
   "별없음 : 상대적으로 중요하지 않고, 자주 쓰지 않지만 알아 두면 도움이 되는 용어",
   "★ : 상대적으로 중요하지만 자주 사용하지 않는 용어",
   "★★ : 중요하지만 자주 사용하지 않는 용어",
   "★★★ : 중요하고 자주 사용하는 단어",
 ];
 
-export const COOKAPPS = [
+export const COOKAPPS: any = [
   {
     통계: {
       "디에이유 (DAU=Daily Active User)": {
@@ -423,7 +423,7 @@ export const COOKAPPS = [
     },
   },
   {
-    "사운드/영상": {
+    "사운드 및 영상": {
       "비지엠 BGM (Back Ground Music)": {
         star: "★★★",
         content:
@@ -719,4 +719,6 @@ export const COOKAPPS = [
   },
 ];
 
-export const CATEGORIES = COOKAPPS.map((data) => Object.keys(data)[0]);
+export const CATEGORIES: any = COOKAPPS.map(
+  (data: any) => Object.keys(data)[0]
+);

@@ -5,19 +5,26 @@ import { FaBars } from "react-icons/fa";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import useOffResize from "@/hooks/useOffResize";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   const [togle, setTogle] = useState(false);
   const togleHandler = () => {
     setTogle(!togle);
+  };
+
+  const moveCategory = (category: string) => {
+    router.push(category);
+    setTogle(false);
   };
 
   const navData = useMemo(
     () => (
       <nav>
         <ul>
-          {CATEGORIES.map((category) => (
-            <li key={category}>
+          {CATEGORIES.map((category: any) => (
+            <li onClick={() => moveCategory(category)} key={category}>
               <span>{category}</span>
             </li>
           ))}

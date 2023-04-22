@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Header from "@/components/Header";
 import styled from "styled-components";
 
 const Main = styled.main`
@@ -10,14 +9,15 @@ const Main = styled.main`
   width: 100%;
 `;
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Head>
         <title>쿡앱스 용어정리집</title>
       </Head>
-      <Header />
       <Main>메인입니다.</Main>
     </>
   );
-}
+};
+
+export default Home;
