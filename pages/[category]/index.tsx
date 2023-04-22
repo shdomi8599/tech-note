@@ -34,9 +34,9 @@ const Category = () => {
     const arrData = Object.entries(data);
     if (option === "high") {
       const filteredData = arrData.sort((a, b) => {
-        if (a[1].star.length > b[1].star.length) return -1;
-        if (a[1].star.length < b[1].star.length) return 1;
-        return 0;
+        const starA = a[1].star.length;
+        const starB = b[1].star.length;
+        return starB - starA;
       });
       return setFilterData(filteredData);
     }
@@ -161,26 +161,20 @@ const CategoryBox = styled.main`
       padding: 0px;
     }
 
-    /* > div:first-child {
-      position: absolute;
-      right: 50px;
-      bottom: -13px;
-    } */
-
     > div:last-child {
       @media (max-width: 410px) {
         margin-top: 20px;
       }
-    }
 
-    select {
-      margin: 0px 28px;
-      width: 140px;
-      font-size: 1.2rem;
-      padding: 6px;
-      font-weight: 600;
-      box-shadow: var(--boxshadow);
-      border: 1px solid #c8cac8;
+      select {
+        margin: 0px 28px;
+        width: 140px;
+        font-size: 1.2rem;
+        padding: 6px;
+        font-weight: 600;
+        box-shadow: var(--boxshadow);
+        border: 1px solid #c8cac8;
+      }
     }
   }
 
