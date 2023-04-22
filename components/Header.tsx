@@ -3,24 +3,25 @@ import styled from "styled-components";
 import { CATEGORIES } from "@/constant/constant";
 import { FaBars } from "react-icons/fa";
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import useOffResize from "@/hooks/useOffResize";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
-import { optionState } from "@/recoil/store";
+import { modeState, optionState } from "@/recoil/store";
 
 const Header = () => {
   const setOption = useSetRecoilState(optionState);
+  const setMode = useSetRecoilState(modeState);
   const router = useRouter();
   const [togle, setTogle] = useState(false);
   const togleHandler = () => {
     setTogle(!togle);
   };
 
-  const moveCategory = (category: string) => {
+  const moveCategory = (category: string = "/") => {
     router.push(category);
     setTogle(false);
     setOption("high");
+    setMode(false);
   };
 
   const navData = useMemo(
@@ -44,12 +45,12 @@ const Header = () => {
   return (
     <HeaderBox togle={togle}>
       <div className="logo">
-        <Link href="/">
+        <a onClick={() => moveCategory()}>
           <img
             src="https://www.cookapps.com/img/logo-white.76a0b6f4.svg"
             alt="logo"
           />
-        </Link>
+        </a>
       </div>
       <div className="main_nav">{navData}</div>
       <div className="togle_btn">
@@ -80,6 +81,7 @@ const HeaderBox = styled.header<HeaderBoxProps>`
   }
 
   .logo {
+    cursor: pointer;
     margin-left: 28px;
     @media (max-width: 236px) {
       margin-left: 0px;

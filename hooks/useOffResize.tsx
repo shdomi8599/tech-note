@@ -30,6 +30,7 @@ const useOffResize = (
         window.removeEventListener("resize", downOffMenu);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
