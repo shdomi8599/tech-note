@@ -54,8 +54,11 @@ const FilterBox = styled.div`
     align-items: center;
     padding: 0px;
   }
+  @media (max-width: 236px) {
+    margin-top: 40px;
+  }
 
-  > div:last-child {
+  > div:nth-child(2) {
     @media (max-width: 410px) {
       margin-top: 20px;
     }

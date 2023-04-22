@@ -93,7 +93,9 @@ type CategoryBoxProps = {
 const CategoryBox = styled.section<CategoryBoxProps>`
   padding: 90px calc((100% - 1400px) / 2);
   padding-bottom: ${(props) => props.directIndex && "0px"};
-  border-top: 1px solid #dddddd;
+  border-top: ${(props) =>
+    props.directIndex !== 0 ? "1px solid #dddddd" : ""};
+  padding-top: ${(props) => props.directIndex === 0 && "30px"};
   width: 100%;
   display: flex;
   align-items: center;

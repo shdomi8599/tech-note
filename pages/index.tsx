@@ -32,10 +32,5 @@ const Main = styled.main`
   align-items: center;
   flex-direction: column;
   width: 100%;
-
-  > div:first-child {
-    position: absolute;
-    top: 100px;
-    right: 275px;
-  }
+  padding: 90px calc((100% - 1400px) / 2);
 `;
