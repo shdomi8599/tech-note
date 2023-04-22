@@ -13,6 +13,11 @@ const Category = () => {
     (category) => category === router.query.category
   );
 
+  const [mode, setMode] = useRecoilState(modeState);
+  const modeHandler = () => {
+    setMode(!mode);
+  };
+
   const [option, setOption] = useRecoilState(optionState);
   const changeOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOption(e.target.value);
@@ -51,11 +56,6 @@ const Category = () => {
     recommendFilter(option);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [option]);
-
-  const [mode, setMode] = useRecoilState(modeState);
-  const modeHandler = () => {
-    setMode(!mode);
-  };
   return (
     <>
       <Head>

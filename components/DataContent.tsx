@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Content } from "@/constant/constant";
-import { modeState } from "@/recoil/store";
+import { modeState, optionState } from "@/recoil/store";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
@@ -11,6 +11,7 @@ type DataContentProps = {
 };
 
 const DataContent = ({ name, value }: DataContentProps) => {
+  const option = useRecoilValue(optionState);
   const [drop, setDrop] = useState(false);
   const dropHandler = () => {
     setDrop(!drop);
@@ -22,7 +23,7 @@ const DataContent = ({ name, value }: DataContentProps) => {
       return setDrop(false);
     }
     setDrop(true);
-  }, [mode]);
+  }, [mode, option]);
 
   return (
     <DataContentBox drop={drop} className="content">
@@ -40,7 +41,7 @@ const DataContent = ({ name, value }: DataContentProps) => {
           <h4>{`(${name.split("(")[1]}`}</h4>
         </div>
       </div>
-      {drop && <div>{value.content}</div>}
+      {drop && <div className="drop_content">{value.content}</div>}
     </DataContentBox>
   );
 };
@@ -74,7 +75,7 @@ const DataContentBox = styled.div<DataContentBoxProps>`
 
       .drop_btn {
         position: absolute;
-        top: 4px;
+        top: 3.5px;
         width: 16px;
         height: 16px;
         display: inline-block;
@@ -88,5 +89,9 @@ const DataContentBox = styled.div<DataContentBoxProps>`
         }
       }
     }
+  }
+
+  .drop_content {
+    line-height: 24px;
   }
 `;
