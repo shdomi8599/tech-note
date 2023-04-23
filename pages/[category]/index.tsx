@@ -101,7 +101,10 @@ const Category = ({ directIndex, name }: CategoryProps) => {
             <DataContent key={name} name={name} value={value} />
           ))}
           {filterData.length === 0 && (
-            <div className="empty_content">★ 데이터가 존재하지 않아요. ★</div>
+            <div className="empty_content">
+              <span className="star">★</span>데이터가 존재하지 않아요.
+              <span className="star">★</span>
+            </div>
           )}
         </div>
       </CategoryBox>
@@ -167,6 +170,10 @@ const CategoryBox = styled.section<CategoryBoxProps>`
       }
       @media (max-width: 470px) {
         font-size: 1.1rem;
+      }
+
+      .star {
+        color: var(--main-color);
       }
     }
   }
