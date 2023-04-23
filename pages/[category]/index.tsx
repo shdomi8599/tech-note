@@ -44,10 +44,6 @@ const Category = ({ directIndex, name }: CategoryProps) => {
   }, [directIndex, index, setData]);
 
   useEffect(() => {
-    setFilterData(Object.entries(data || []));
-  }, [data]);
-
-  useEffect(() => {
     const searchFiltered = Object.entries(data).filter(([key, value]) => {
       return searchSelect === "제목"
         ? key.toLowerCase().includes(searchVal.toLowerCase())
@@ -72,7 +68,7 @@ const Category = ({ directIndex, name }: CategoryProps) => {
     }
     recommendFilter(option);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [option, searchSelect, searchVal]);
+  }, [data, option, searchSelect, searchVal]);
 
   const [, setMode] = useRecoilState(modeState);
   useEffect(() => {

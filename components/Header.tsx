@@ -15,7 +15,6 @@ import Image from "next/image";
 import { useOffClick } from "@/hooks/useOffClick";
 
 const Header = () => {
-  const setOption = useSetRecoilState(optionState);
   const setMode = useSetRecoilState(modeState);
   const setSearchSelect = useSetRecoilState(searchSelectState);
   const setSearchVal = useSetRecoilState(searchValState);
@@ -29,13 +28,13 @@ const Header = () => {
     router.push("/");
     setMode(false);
     setTogle(false);
-    setOption("high");
+    setSearchSelect("제목");
+    setSearchVal("");
   };
 
   const moveCategory = (category: string) => {
     router.push(category);
     setTogle(false);
-    setOption("high");
     setSearchSelect("제목");
     setSearchVal("");
   };
