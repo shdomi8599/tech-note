@@ -41,6 +41,7 @@ const Search = () => {
           className="search-content"
         />
       </div>
+      <button />
     </SearchBox>
   );
 };
@@ -75,5 +76,9 @@ const SearchBox = styled.form`
         font-weight: 600;
       }
     }
+  }
+
+  button {
+    display: none;
   }
 `;
