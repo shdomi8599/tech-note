@@ -50,7 +50,7 @@ export const COOKAPPS: Category[] = [
         content:
           "인앱 구매를 의미하며, 유저가 앱 서비스 내부에서 유료 결제를 통해 추가 콘텐츠를 구매하는 것을 의미함. 통상 IAP 수익+광고 수익이 앱의 매출을 구성한다.",
       },
-      "사용자별 일 평균 매 출 (ARPDAU=Average Revenue Per Daily Active User) ":
+      "사용자별 일 평균 매출 (ARPDAU=Average Revenue Per Daily Active User) ":
         {
           star: "★★★",
           content:
@@ -342,7 +342,7 @@ export const COOKAPPS: Category[] = [
         content:
           "유니티에서 UI를 제작하기 위해 사용되는 GUI 툴이며 UGUI를 이용해 대부분의 UI 아트어셋을 제작한다.",
       },
-      "NAS 폴더(구 100번 폴더)": {
+      "NAS 폴더 (구 100번 폴더)": {
         star: "★★",
         content:
           "대부분의 편집 가능한 디자인 리소스가 백업되어 있는 쿡앱스 내부의 공유폴더.",
@@ -455,7 +455,7 @@ export const COOKAPPS: Category[] = [
         content:
           "음량을 일정하게 만드는 것. 유니티에서 모노로 출력할시 기본으로 체크되는 효과. 해당 옵션을 체크해제 하는 것을 추천함",
       },
-      "루프 (Loop) 음악": {
+      "루프 음악 (Loop)": {
         star: "★★",
         content:
           "루프 음악은 처음과 끝 지점을 반복하여 재생하는 것을 말합니다. 주로 BGM을 루프 시킴으로써 반복적인 음악을 구현합니다.",
@@ -465,7 +465,7 @@ export const COOKAPPS: Category[] = [
         content:
           "스테레오는 동시에 좌, 우 2채널을 출력하는 것을 의미합니다. 좌우 각 다른 소리를 내어서 공간감을 높여줍니다.",
       },
-      "9-Slice 기법": {
+      "나인슬라이스 기법 (9-slice)": {
         star: "★★",
         content:
           "9-Slice 기법은 이미지를 9조각으로 자른 뒤 각각의 모서리를 살리는 기법을 말합니다. 이를 통해 이미지의 크기를 조정할 때, 이미지의 깨짐 현상을 방지할 수 있습니다.",
@@ -517,7 +517,7 @@ export const COOKAPPS: Category[] = [
         star: "★★★",
         content: "amazon.com이 제공하는 원격 컴퓨팅 서비스",
       },
-      "아틀라스 (Atlas)와 아틀라스 최적화 (Atlas Optimization)": {
+      "아틀라스와 아틀라스 최적화 (Atlas Optimization)": {
         star: "★★★",
         content:
           "아틀라스는 게임 이미지를 효율적으로 사용하기 위해 한 시트에 여러 이미지를 담아 놓은 리소스를 말함. 게임에서 이미지는 성능에 많은 영향을 주는데, 아틀라스 최적화란 게임에서 중복적으로 사용되는 이미지를 합쳐서 빈 공간 없이 한 시트에 잘 채우는 행위를 뜻함.",
