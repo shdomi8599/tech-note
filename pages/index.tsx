@@ -6,10 +6,6 @@ import Filter from "@/components/Filter";
 import Search from "@/components/Search";
 
 const Home = () => {
-  const directArr: number[] = Array(8)
-    .fill(0)
-    .map((x, i) => x + i);
-
   return (
     <>
       <Head>
@@ -18,8 +14,8 @@ const Home = () => {
       <Main>
         <Filter />
         <Search />
-        {directArr.map((idx) => (
-          <Category key={idx} directIndex={idx} name={CATEGORIES[idx]} />
+        {CATEGORIES.map((category, idx) => (
+          <Category key={idx} directIndex={idx} name={category} />
         ))}
       </Main>
     </>
