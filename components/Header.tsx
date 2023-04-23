@@ -143,9 +143,9 @@ const HeaderBox = styled.header<HeaderBoxProps>`
   .togle_nav {
     position: absolute;
     width: 100%;
-    top: 56px;
+    top: 54px;
     @media (max-width: 236px) {
-      top: 98px;
+      top: 96px;
     }
 
     nav {
