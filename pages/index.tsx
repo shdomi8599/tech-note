@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>쿡앱스 용어정리집</title>
+        <title>기술면접 정리</title>
       </Head>
       <Main>
         <Filter />
