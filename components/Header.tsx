@@ -7,11 +7,9 @@ import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
 import {
   modeState,
-  optionState,
   searchSelectState,
   searchValState,
 } from "@/recoil/store";
-import Image from "next/image";
 import { useOffClick } from "@/hooks/useOffClick";
 
 const Header = () => {
@@ -61,12 +59,6 @@ const Header = () => {
     <HeaderBox togle={togle} ref={ref}>
       <div className="logo">
         <a onClick={moveHome}>
-          <Image
-            width={129}
-            height={28}
-            src={"https://www.cookapps.com/img/logo-white.76a0b6f4.svg"}
-            alt="logo"
-          />
         </a>
       </div>
       <div className="main_nav">{navData}</div>

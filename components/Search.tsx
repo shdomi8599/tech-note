@@ -52,7 +52,7 @@ const Search = () => {
 export default Search;
 
 const SearchBox = styled.form`
-  margin-top: 50px;
+  margin-top: 0px;
   display: flex;
   width: 100%;
   padding-left: 28px;

@@ -1,6 +1,5 @@
 import { IMPOTANCE } from "@/constant/constant";
 import { modeState, optionState } from "@/recoil/store";
-import Image from "next/image";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 
@@ -11,9 +10,6 @@ const Filter = () => {
   };
 
   const [option, setOption] = useRecoilState(optionState);
-  const changeOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOption(e.target.value);
-  };
 
   return (
     <FilterBox>
@@ -26,31 +22,8 @@ const Filter = () => {
           </div>
         </label>
       </div>
-      <div>
-        <select
-          className="search-content"
-          value={option}
-          onChange={changeOption}
-        >
-          <optgroup label="중요">
-            <option value="high">별 높은 순</option>
-            <option value="low">별 낮은 순</option>
-          </optgroup>
-          <optgroup label="추천">
-            <option value="">별없음</option>
-            <option value="★">★</option>
-            <option value="★★">★★</option>
-            <option value="★★★">★★★</option>
-          </optgroup>
-        </select>
-      </div>
+      <div></div>
       <div className="mark">
-        <Image
-          width={30}
-          height={30}
-          src={`/cookapps-dictionary/question.png`}
-          alt="question_mark"
-        />
         <div className="speech">
           {IMPOTANCE.map((x) => (
             <div key={x}>{x}</div>

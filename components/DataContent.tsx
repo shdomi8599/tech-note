@@ -32,19 +32,17 @@ const DataContent = ({ name, value }: DataContentProps) => {
           <div>
             <span className="drop_btn" onClick={dropHandler}>
               <Image
-                src={`/cookapps-dictionary/drop-down.png`}
+                src={`/drop-down.png`}
                 width={16}
                 height={16}
                 alt="drop_down"
               />
             </span>
             <span className="star">{value.star}</span>
-            <h2>{name.split("(")[0]}</h2>
+            <h2>{name}</h2>
           </div>
         </div>
-        <div>
-          <h4>{`(${name.split("(")[1]}`}</h4>
-        </div>
+        <div></div>
       </div>
       {drop && <div className="drop_content">{value.content}</div>}
     </DataContentBox>
