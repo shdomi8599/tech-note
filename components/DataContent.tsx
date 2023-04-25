@@ -32,7 +32,7 @@ const DataContent = ({ name, value }: DataContentProps) => {
           <div>
             <span className="drop_btn" onClick={dropHandler}>
               <Image
-                src={`/drop-down.png`}
+                src={`/tech-note/drop-down.png`}
                 width={16}
                 height={16}
                 alt="drop_down"
