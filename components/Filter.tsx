@@ -69,53 +69,6 @@ const FilterBox = styled.div`
     margin-right: 25px;
     position: relative;
 
-    :hover {
-      .speech {
-        display: block;
-        position: absolute;
-        background: var(--main-color);
-        border-radius: 0.4em;
-        width: 235px;
-        font-weight: 600;
-        color: white;
-        right: 60px;
-        bottom: -63px;
-        z-index: 2;
-        padding: 20px;
-        @media (max-width: 470px) {
-          right: -102.7px;
-          bottom: 30px;
-        }
-
-        ::after {
-          content: "";
-          position: absolute;
-          right: 0;
-          top: 50%;
-          width: 0;
-          height: 0;
-          border: 22px solid transparent;
-          border-left-color: var(--main-color);
-          border-right: 0;
-          border-top: 0;
-          margin-top: -11px;
-          margin-right: -22px;
-          @media (max-width: 470px) {
-            top: 107%;
-            left: 50%;
-            border: 22px solid transparent;
-            border-top-color: var(--main-color);
-            margin-left: -22px;
-            margin-bottom: -22px;
-          }
-        }
-
-        > div {
-          margin: 4px 0px;
-        }
-      }
-    }
-
     @media (max-width: 470px) {
       margin-top: 20px;
       margin-right: 0px;
