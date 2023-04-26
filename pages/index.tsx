@@ -30,6 +30,7 @@ const Main = styled.main`
   align-items: center;
   flex-direction: column;
   width: 100%;
+  min-height: 101vh;
   padding: 90px calc((100% - 1400px) / 2);
   padding-bottom: 0px;
 
