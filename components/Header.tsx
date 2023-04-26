@@ -19,7 +19,7 @@ const Header = () => {
   const router = useRouter();
   const [togle, setTogle, ref] = useOffClick(false);
   const togleHandler = () => {
-    setTogle(!togle);
+    setTogle(false);
   };
 
   const moveHome = () => {
